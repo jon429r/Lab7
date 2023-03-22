@@ -39,6 +39,14 @@ public class Main {
         return allSongs;
 	}
 	
+	public static String[] input() {
+		Scanner scnr = new Scanner(System.in);
+		String query = scnr.next();
+		
+		String[] input = query.split("\\s+");
+		scnr.close();
+		return input;
+	}
 
 }
 
