@@ -7,6 +7,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		ArrayList<Song> allSongs = readSongs();
 		
+		//A quick test line
+		System.out.println(allSongs.get(0));
 	}
 	
 	//Method to read in the songs
