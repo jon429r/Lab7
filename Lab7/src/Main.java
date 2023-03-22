@@ -1,28 +1,40 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
-		readSongs();
+		ArrayList<Song> allSongs = readSongs();
+		
 	}
 	
 	//Method to read in the songs
-	public static void readSongs() {
+	public static ArrayList<Song> readSongs() throws FileNotFoundException {
 		String currentDirectory = System.getProperty("user.dir");
 		String directoryPath = currentDirectory + "/src/Queen";
 		File directory = new File(directoryPath);
 		File[] files = directory.listFiles();
 
-        // Loop through the files and print their names
+        ArrayList<Song> allSongs = new ArrayList<Song>();
+		String line = "";
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
-                    System.out.println(file.getName());
+                	String title = file.getName();
+                	int period = title.lastIndexOf(".txt");
+                	title = title.substring(0,period);
+
+                    Scanner sc = new Scanner(new File(directoryPath + "/"+ file.getName()));
+                    while(sc.hasNextLine()){
+                    	line += sc.nextLine() + "\n";
+                    }
+                    Song newSong = new Song(title,line);
+                    allSongs.add(newSong);
                 }
             }
         }
-    
+        return allSongs;
 	}
 	
 

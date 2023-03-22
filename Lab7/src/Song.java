@@ -13,6 +13,6 @@ public class Song {
 		return lyrics;
 	}
 	public String toString() {
-		return "Title: " + getTitle() + " Lyrics: " + getLyrics();
+		return "Title: " + getTitle() + "\n\n" + getLyrics();
 	}
 }
