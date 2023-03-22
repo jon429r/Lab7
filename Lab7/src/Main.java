@@ -10,7 +10,7 @@ public class Main {
 	//Method to read in the songs
 	public static void readSongs() {
 		String currentDirectory = System.getProperty("user.dir");
-		String directoryPath = currentDirectory + "\\src\\Queen";
+		String directoryPath = currentDirectory + "/src/Queen";
 		File directory = new File(directoryPath);
 		File[] files = directory.listFiles();
 
