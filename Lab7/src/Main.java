@@ -45,7 +45,7 @@ public class Main {
 		System.out.println("What would you like to search for?");
 
 		Scanner scnr = new Scanner(System.in);
-		String query = scnr.next();
+		String query = scnr.nextLine();
 		
 
 		String[] input = query.split("\\s+");
