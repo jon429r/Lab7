@@ -1,15 +1,16 @@
+import java.util.ArrayList;
 
 public class Song {
 	String title;
-	String lyrics;
-	public Song(String title, String lyrics) {
+	ArrayList<String> lyrics;
+	public Song(String title, ArrayList<String> lyrics) {
 		this.title = title;
 		this.lyrics = lyrics;
 	}
 	public String getTitle() {
 		return title;
 	}
-	public String getLyrics() {
+	public ArrayList<String> getLyrics() {
 		return lyrics;
 	}
 	public String toString() {
