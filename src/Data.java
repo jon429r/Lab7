@@ -10,8 +10,16 @@ public class Data {
      termFrequencys=TermFrequencys;
      idf=Idf;
     }
-    public static ArrayList<Data> calculateTFIDF(ArrayList<ArrayList<String>> songs){
-     return new  ArrayList<Data>();
+
+    public static ArrayList<Data> calculateTFIDF(String query,ArrayList<ArrayList<String>> songs){
+        //populating dataList with the query
+        String[] terms = query.split(" ");
+        ArrayList<Data> dataList= new ArrayList<Data>();
+        for(String term:terms){
+            dataList.add(new Data(term,new ArrayList<Double>(),0.0));
+        }
+
+        return dataList;
     }
     public static void main(String[]args){
         String[] documents = 
