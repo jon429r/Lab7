@@ -29,9 +29,14 @@ public class Main {
 
                     Scanner sc = new Scanner(new File(directoryPath + "/"+ file.getName()));
                     while(sc.hasNextLine()){
-						String newLine = sc.nextLine() +"\n";
-						newLine = newLine.replaceAll("[\"()?!,.']", "");
-						line.add(newLine);
+						String newLine = sc.nextLine();//takes the line of text
+						
+						newLine = newLine.replaceAll("[\"()?!,.']", "");//removes special characters
+				        String[] words = newLine.split("\\s+"); //splits into indiviual words
+				        
+				        for (String word : words) {//adds the words to the arraylist
+				            line.add(word);
+				        }
                     }
                     Song newSong = new Song(title,line);
                     allSongs.add(newSong);
