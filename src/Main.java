@@ -6,7 +6,12 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		ArrayList<Song> allSongs = readSongs();
-		
+		ArrayList<ArrayList<String>> songs = new ArrayList<ArrayList<String>>();
+		for(Song s:allSongs){
+			songs.add(s.lyrics);
+		}
+		ArrayList<Data> values = Data.calculateTFIDF("happy music bring power",songs);
+		int a=3;
 		//A quick test line
 		System.out.println(allSongs.get(0));
 	}

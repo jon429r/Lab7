@@ -10,6 +10,49 @@ public class Data {
      termFrequencys=TermFrequencys;
      idf=Idf;
     }
+    public static ArrayList<Data> calculateTFIDF(String query, ArrayList<ArrayList<String>> tokenizedDocuments){
+        String[] terms = query.split(" ");
+        ArrayList<Data> dataList= new ArrayList<Data>();
+        for(String term:terms){
+            dataList.add(new Data(term,new ArrayList<Double>(),0.0));
+        }
+        int termFrequency=0;
+        int inverseDocumentfrequency=0;
+        boolean found=false;
+        int i=0,j=0,k=0;
+        for(;i<=dataList.size();i++){
+            //documents idf calculated here
+
+            if(i>=1){
+            (dataList.get(i-1)).idf=Math.log(tokenizedDocuments.size()/inverseDocumentfrequency);
+            }
+            inverseDocumentfrequency=0;
+               
+            for(j=0;i<dataList.size()&&j<=tokenizedDocuments.size();j++){
+                //tokenized documents
+
+                if(j>=1){
+                (dataList.get(i)).termFrequencys.add((double)termFrequency/((tokenizedDocuments.get(j-1))).size());
+                }
+                if(found==true){
+                    inverseDocumentfrequency++;
+                }
+    
+                found=false;
+                termFrequency=0;
+
+                for(k=0;j<tokenizedDocuments.size() && k<tokenizedDocuments.get(j).size();k++){
+                    if((tokenizedDocuments.get(j)).get(k).compareToIgnoreCase((dataList.get(i)).term)==0){
+                        found=true;
+                        termFrequency++;
+                   
+                  }
+                    
+                }
+            }
+        }
+        return dataList;
+    }
     public static void main(String[]args){
         String[] documents = 
         {"I want happy music to bring me power",
