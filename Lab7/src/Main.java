@@ -6,12 +6,11 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		ArrayList<Song> allSongs = readSongs();
-
+		
 		//A quick test line
 		System.out.println(allSongs.get(0));
-		input();
 	}
-
+	
 	//Method to read in the songs
 	public static ArrayList<Song> readSongs() throws FileNotFoundException {
 		String currentDirectory = System.getProperty("user.dir");
@@ -19,36 +18,36 @@ public class Main {
 		File directory = new File(directoryPath);
 		File[] files = directory.listFiles();
 
-		ArrayList<Song> allSongs = new ArrayList<Song>();
-		String line = "";
-		if (files != null) {
-			for (File file : files) {
-				if (file.isFile()) {
-					String title = file.getName();
-					int period = title.lastIndexOf(".txt");
-					title = title.substring(0,period);
+        ArrayList<Song> allSongs = new ArrayList<Song>();
+		ArrayList<String> line = new ArrayList<String>();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                	String title = file.getName();
+                	int period = title.lastIndexOf(".txt");
+                	title = title.substring(0,period);
 
-					Scanner sc = new Scanner(new File(directoryPath + "/"+ file.getName()));
-					while(sc.hasNextLine()){
-						line += sc.nextLine() + "\n";
-					}
-					Song newSong = new Song(title,line);
-					allSongs.add(newSong);
-				}
-			}
-		}
-		return allSongs;
+                    Scanner sc = new Scanner(new File(directoryPath + "/"+ file.getName()));
+                    while(sc.hasNextLine()){
+						String newLine = sc.nextLine() +"\n";
+						newLine = newLine.replaceAll("[\"()?!,.']", "");
+						line.add(newLine);
+                    }
+                    Song newSong = new Song(title,line);
+                    allSongs.add(newSong);
+                }
+            }
+        }
+        return allSongs;
 	}
-
+	
 	public static String[] input() {
 		Scanner scnr = new Scanner(System.in);
 		String query = scnr.next();
 		
-		query = query.replaceAll("[\"()?!,.']", "");
-        String[] token = query.split(" ");
-		
+		String[] input = query.split("\\s+");
 		scnr.close();
-		return token;
+		return input;
 	}
 
 }
