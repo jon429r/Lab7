@@ -35,9 +35,6 @@ public class Main {
 				        String[] words = newLine.split("\\s+"); //splits into indiviual words
 				        
 				        for (String word : words) {//adds the words to the arraylist
-				        	if(word.compareTo("")==0) {
-				        		continue;
-				        	}
 				            line.add(word);
 				        }
                     }
