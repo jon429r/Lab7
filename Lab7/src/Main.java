@@ -41,16 +41,14 @@ public class Main {
 	}
 
 	public static String[] input() {
-		
-		System.out.println("What would you like to search for?");
-
 		Scanner scnr = new Scanner(System.in);
-		String query = scnr.nextLine();
+		String query = scnr.next();
 		
-
-		String[] input = query.split("\\s+");
+		query = query.replaceAll("[\"()?!,.']", "");
+        String[] token = query.split(" ");
+		
 		scnr.close();
-		return input;
+		return token;
 	}
 
 }
