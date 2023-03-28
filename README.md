@@ -15,9 +15,13 @@ Nikki Gorski was responsible for building the ranking system.
 Original readSongs method():
 
 public static ArrayList<Song> readSongs() throws FileNotFoundException {
+	
 		String currentDirectory = System.getProperty("user.dir");
+	
 		String directoryPath = currentDirectory + "/src/Queen";
+	
 		File directory = new File(directoryPath);
+	
 		File[] files = directory.listFiles();
 
 		ArrayList<Song> allSongs = new ArrayList<Song>();
