@@ -14,7 +14,7 @@ Nikki Gorski was responsible for building the ranking system.
 
 Original readSongs method():
 
-public static ArrayList<Song> readSongs() throws FileNotFoundException {
+	public static ArrayList<Song> readSongs() throws FileNotFoundException {
 	
 		String currentDirectory = System.getProperty("user.dir");
 	
