@@ -11,7 +11,6 @@ public class Main {
 			songs.add(s.lyrics);
 		}
 		ArrayList<Data> values = Data.calculateTFIDF("happy music bring power",songs);
-		int a=3;
 		//A quick test line
 		System.out.println(allSongs.get(0));
 	}
@@ -24,7 +23,6 @@ public class Main {
 		File[] files = directory.listFiles();
 
         ArrayList<Song> allSongs = new ArrayList<Song>();
-		ArrayList<String> line = new ArrayList<String>();
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
@@ -32,7 +30,8 @@ public class Main {
                 	int period = title.lastIndexOf(".txt");
                 	title = title.substring(0,period);
 
-                    Scanner sc = new Scanner(new File(directoryPath + "/"+ file.getName()));
+                    Scanner sc = new Scanner(new File(file.getPath()));
+					ArrayList<String> line = new ArrayList<String>();
                     while(sc.hasNextLine()){
 						String newLine = sc.nextLine();//takes the line of text
 						
@@ -43,11 +42,13 @@ public class Main {
 							if(word.compareTo("")==0) {
 				        		continue;
 				        	}
+							
 				            line.add(word);
 				        }
                     }
                     Song newSong = new Song(title,line);
                     allSongs.add(newSong);
+					
                 }
             }
         }
